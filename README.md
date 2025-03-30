@@ -1,7 +1,7 @@
 # Describe Image - Chrome Extension
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/your-extension-id)](https://chrome.google.com/webstore/detail/your-extension-id)
-[![License](https://img.shields.io/github/license/yourusername/describe-image)](LICENSE)
+[![License](https://img.shields.io/github/license/vishal733/describe-image)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 A powerful Chrome extension that uses ChatGPT to provide detailed descriptions of any image on the web. Simply right-click on any image and get an AI-powered description instantly.
@@ -17,17 +17,11 @@ A powerful Chrome extension that uses ChatGPT to provide detailed descriptions o
 
 ## 🚀 Installation
 
-### From Chrome Web Store
-
-1. Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/your-extension-id)
-2. Click "Add to Chrome"
-3. Follow the prompts to install
-
 ### Manual Installation
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/describe-image.git
+   git clone https://github.com/vishal733/describe-image.git
    ```
 2. Install dependencies:
    ```bash
@@ -116,7 +110,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have suggestions, please:
 
-1. Check the [Issues](https://github.com/yourusername/describe-image/issues) page
+1. Check the [Issues](https://github.com/vishal733/describe-image/issues) page
 2. Create a new issue if needed
 3. Include as much detail as possible about the problem
 
@@ -134,4 +128,4 @@ If you encounter any issues or have suggestions, please:
 
 ---
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Kumar Vishal](https://github.com/vishal733)
