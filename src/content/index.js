@@ -19,9 +19,47 @@ descriptionBox.style.cssText = `
 `;
 document.body.appendChild(descriptionBox);
 
+// Create loading spinner
+const loadingSpinner = document.createElement("div");
+loadingSpinner.className = "loading-spinner";
+loadingSpinner.style.cssText = `
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 10000;
+`;
+
+// Add loading spinner styles
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .extension-highlight {
+    background-color: yellow;
+    padding: 2px;
+  }
+`;
+document.head.appendChild(style);
+
+// Add loading spinner to page
+document.body.appendChild(loadingSpinner);
+
 // Listen for messages from background script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "GET_IMAGE_DATA") {
+    // Show loading spinner
+    loadingSpinner.style.display = "block";
+    descriptionBox.style.display = "none";
+
     // Fetch the image and convert to base64
     fetch(message.imageUrl)
       .then((response) => response.blob())
@@ -40,10 +78,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       .catch((error) => {
         console.error("Error fetching image:", error);
         showError("Failed to process image");
+        loadingSpinner.style.display = "none";
       });
   } else if (message.type === "SHOW_DESCRIPTION") {
+    loadingSpinner.style.display = "none";
     showDescription(message.description);
   } else if (message.type === "SHOW_ERROR") {
+    loadingSpinner.style.display = "none";
     showError(message.error);
   }
 });
@@ -125,13 +166,3 @@ function showError(error) {
   };
   descriptionBox.appendChild(closeButton);
 }
-
-// Example of modifying the page
-const style = document.createElement("style");
-style.textContent = `
-  .extension-highlight {
-    background-color: yellow;
-    padding: 2px;
-  }
-`;
-document.head.appendChild(style);

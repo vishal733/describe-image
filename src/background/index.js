@@ -14,11 +14,36 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     // Get the image URL
     const imageUrl = info.srcUrl;
 
-    // Send message to content script to get image data
-    chrome.tabs.sendMessage(tab.id, {
-      type: "GET_IMAGE_DATA",
-      imageUrl: imageUrl,
-    });
+    // First, inject the content script if it's not already injected
+    chrome.scripting
+      .executeScript({
+        target: { tabId: tab.id },
+        files: ["content.js"],
+      })
+      .then(() => {
+        // Then send message to content script
+        chrome.tabs
+          .sendMessage(tab.id, {
+            type: "GET_IMAGE_DATA",
+            imageUrl: imageUrl,
+          })
+          .catch((error) => {
+            console.error("Error sending message to content script:", error);
+            // If the message fails, try injecting the script again
+            chrome.scripting
+              .executeScript({
+                target: { tabId: tab.id },
+                files: ["content.js"],
+              })
+              .then(() => {
+                // Try sending the message again
+                chrome.tabs.sendMessage(tab.id, {
+                  type: "GET_IMAGE_DATA",
+                  imageUrl: imageUrl,
+                });
+              });
+          });
+      });
   }
 });
 
@@ -29,17 +54,28 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     callChatGPTAPI(message.imageData)
       .then((description) => {
         // Send description back to content script
-        chrome.tabs.sendMessage(sender.tab.id, {
-          type: "SHOW_DESCRIPTION",
-          description: description,
-        });
+        chrome.tabs
+          .sendMessage(sender.tab.id, {
+            type: "SHOW_DESCRIPTION",
+            description: description,
+          })
+          .catch((error) => {
+            console.error(
+              "Error sending description to content script:",
+              error
+            );
+          });
       })
       .catch((error) => {
         console.error("Error calling ChatGPT API:", error);
-        chrome.tabs.sendMessage(sender.tab.id, {
-          type: "SHOW_ERROR",
-          error: error.message || "Failed to get image description",
-        });
+        chrome.tabs
+          .sendMessage(sender.tab.id, {
+            type: "SHOW_ERROR",
+            error: error.message || "Failed to get image description",
+          })
+          .catch((error) => {
+            console.error("Error sending error to content script:", error);
+          });
       });
     return true; // Keep the message channel open for async response
   }
