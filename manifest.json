@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "React Chrome Extension",
+  "name": "Describe Image",
   "version": "1.0.0",
-  "description": "A Chrome extension built with React",
+  "description": "Get AI-powered descriptions of any image on the web using ChatGPT",
   "permissions": [
     "storage",
     "activeTab",
