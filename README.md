@@ -1,76 +1,61 @@
-# Describe Image - Chrome Extension
+# Describe Image
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/your-extension-id)](https://chrome.google.com/webstore/detail/your-extension-id)
-[![License](https://img.shields.io/github/license/vishal733/describe-image)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT-4-412991)](https://openai.com)
 
-A powerful Chrome extension that uses ChatGPT to provide detailed descriptions of any image on the web. Simply right-click on any image and get an AI-powered description instantly.
+A Chrome extension that uses OpenAI's GPT-4 Vision model to provide detailed descriptions of images on any webpage. Simply right-click on an image and get an AI-powered description instantly.
 
-## ✨ Features
+## Features
 
-- 🔍 Right-click any image to get an AI description
-- 🤖 Powered by ChatGPT's Vision API
-- 🚀 Fast and easy to use
-- 💾 Secure API key storage
-- 🎨 Clean and intuitive interface
-- 🌐 Works on any website
+- 🔍 Instant image analysis using GPT-4 Vision
+- 🖼️ Works on any image across the web
+- ⚡ Fast and efficient processing
+- 🔒 Secure API key storage
+- 🎨 Clean, modern Google Material Design interface
 
-## 🚀 Installation
-
-### Manual Installation
+## Installation
 
 1. Clone this repository:
+
    ```bash
-   git clone https://github.com/vishal733/describe-image.git
+   git clone https://github.com/yourusername/describe-image.git
    ```
+
 2. Install dependencies:
+
    ```bash
+   cd describe-image
    npm install
    ```
+
 3. Build the extension:
+
    ```bash
    npm run build
    ```
+
 4. Load the extension in Chrome:
    - Open Chrome and navigate to `chrome://extensions/`
    - Enable "Developer mode" in the top right
-   - Click "Load unpacked" and select the `dist` folder
+   - Click "Load unpacked" and select the `dist` folder from this project
 
-## 🔑 Setup
+## Usage
 
-1. Click the extension icon in your Chrome toolbar
-2. Enter your OpenAI API key
-3. Click "Save API Key"
-4. You're ready to use the extension!
+1. Get your OpenAI API key from [OpenAI's website](https://platform.openai.com/api-keys)
+2. Click the extension icon and enter your API key
+3. Right-click on any image on a webpage
+4. Select "Describe Image" from the context menu
+5. View the AI-generated description in the popup window
 
-## 🎯 Usage
+## Development
 
-1. Right-click on any image on a webpage
-2. Select "Describe this image with ChatGPT"
-3. Wait for the AI to analyze the image
-4. View the description in a floating box
-5. Click the × button to close the description
+This extension is built with:
 
-## 🛠️ Development
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm (v6 or higher)
-- Chrome browser
-
-### Building for Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development mode with watch
-npm run watch
-
-# Build for production
-npm run build
-```
+- React
+- Chrome Extension Manifest V3
+- OpenAI GPT-4 Vision API
+- Google Material Design
 
 ### Project Structure
 
@@ -79,53 +64,44 @@ describe-image/
 ├── src/
 │   ├── popup/          # Extension popup UI
 │   ├── background/     # Background service worker
-│   └── content/        # Content script
-├── public/             # Static files
-├── icons/             # Extension icons
-├── dist/              # Built extension files
-└── manifest.json      # Extension manifest
+│   ├── content/        # Content scripts
+│   └── utils/          # Shared utilities
+├── public/             # Static assets
+└── manifest.json       # Extension manifest
 ```
 
-## 🤝 Contributing
+### Building
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+```bash
+# Development build
+npm run dev
 
-## 📝 License
+# Production build
+npm run build
+```
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🔒 Security
+## Acknowledgments
 
-- Your OpenAI API key is stored securely in Chrome's local storage
-- No data is sent to any servers except OpenAI's API
-- The extension only has access to images you explicitly choose to describe
+- OpenAI for providing the GPT-4 Vision API
+- Google for the Material Design guidelines
+- The Chrome Extensions team for Manifest V3
 
-## 🙏 Acknowledgments
+## Support
 
-- OpenAI for providing the ChatGPT Vision API
-- React team for the amazing framework
-- All contributors who help improve this extension
+If you encounter any issues or have questions, please:
 
-## 📞 Support
-
-If you encounter any issues or have suggestions, please:
-
-1. Check the [Issues](https://github.com/vishal733/describe-image/issues) page
-2. Create a new issue if needed
-3. Include as much detail as possible about the problem
-
-## 📈 Roadmap
-
-- [ ] Add support for multiple languages
-- [ ] Implement image editing capabilities
-- [ ] Add batch image processing
-- [ ] Support for video frames
-- [ ] Custom prompt templates
-
-## 📱 Screenshots
-
-[Add screenshots of your extension in action]
+1. Check our [FAQ](FAQ.md)
+2. Open an issue on GitHub
+3. Contact us at support@describe-image.com
 
 ---
 
-Made with ❤️ by [Kumar Vishal](https://github.com/vishal733)
+Made with ❤️ by [Your Name/Organization]
